@@ -17,6 +17,10 @@ SCRIPT_TAG = re.compile(r'<!%.*%!>', re.IGNORECASE)
 
 app = Flask(__name__)
 
+@app.route('/hello')
+def hello():
+    return 'Hello, world!'
+
 @app.route('/')
 def serve_unit_price():
     url = request.args.get('url', TEST_URL)
