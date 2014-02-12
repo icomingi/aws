@@ -21,7 +21,7 @@ app = Flask(__name__)
 def serve_unit_price():
     url = request.args.get('url', TEST_URL)
     url_parse_result = urlparse.urlparse(url)
-        if 'jd.com' in url_parse_result.netloc:
+    if 'jd.com' in url_parse_result.netloc:
         parser = JdInfoParser()
     elif 'yhd.com' in url_parse_result.netloc and '/' != url_parse_result.path:
         parser = YhdInfoParser()
