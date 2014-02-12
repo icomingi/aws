@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from sgmllib import SGMLParser
-from re_test import extract_data
+from net_pattern import extract_data
 
 from urllib import urlopen
 import json
