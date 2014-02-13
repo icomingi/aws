@@ -24,6 +24,7 @@ def hello():
 @app.route('/')
 def serve_unit_price():
     url = request.args.get('url', TEST_URL)
+#    app.logger.warning("url: %s" url)
     url_parse_result = urlparse.urlparse(url)
     if 'jd.com' in url_parse_result.netloc:
         parser = JdInfoParser()
@@ -34,14 +35,15 @@ def serve_unit_price():
     parser.feed(rm_script(get_content(url)))
     parser.close()
     body = parser.output()
-    return (make_response(json.dumps(body)), '200', {'Content-type': 'application/json'})
+    return (make_response(json.dumps(body)), '200 OK', {'Content-type': 'application/json'})
     
 
 def get_content(url):
     try:
         f = urllib.urlopen(url)
     except:
-        app.logger.error("This url %s cannot be opened." % url)
+#        app.logger.error("This url %s cannot be opened." % url)
+        pass
     else:
         c = f.read()
     finally:
